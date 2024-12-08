@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Selamat Datang, {{ name }}</h1>
-        <h2>NIM: {{ nim }}</h2>
-        <a href="{{ url_for('quiz') }}" class="button">Mulai Kuis</a>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; padding: 50px;">
+    <h2>Welcome, {{ profile.name }}!</h2>
+    <p>We're excited to have you here. Organize your day and achieve your goals with your personal To-Do List.</p>
+    <p>Start adding tasks to make your day more productive!</p>
+    <a href="{{ url_for('add_task') }}" style="text-decoration: none; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px;">Add Your First Task</a>
+</div>
+{% endblock %}
