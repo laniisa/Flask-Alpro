@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<h2 class="title">Detail Tugas</h2>
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <p>Status: 
+        {% if task.status == "Completed" %}
+            <span class="status completed">{{ task.status }}</span>
+        {% else %}
+            <span class="status pending">{{ task.status }}</span>
+        {% endif %}
+    </p>
+    <a href="{{ url_for('index') }}" class="btn detail-btn">Kembali</a>
+</div>
+{% endblock %}

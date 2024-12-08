@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="title">Tambah Tugas Baru</h2>
+    <form method="POST" action="{{ url_for('add_task') }}">
+        <label for="title">Judul:</label>
+        <input type="text" name="title" id="title" required>
+        <label for="description">Deskripsi:</label>
+        <textarea name="description" id="description" required></textarea>
+        <button type="submit">Tambah Tugas</button>
+    </form>
+</div>
+{% endblock %}

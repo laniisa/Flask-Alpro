@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="title">Profil Pengguna</h2>
+    <div class="profile">
+        <h3>Nama: {{ profile.name }}</h3>
+        <p>Email: {{ profile.email }}</p>
+        <p>Bio: {{ profile.bio }}</p>
+        <p>Tugas Selesai: {{ profile.tasks_completed }}</p>
+    </div>
+    <a href="{{ url_for('index') }}" class="btn back-btn">Kembali ke Halaman Utama</a>
+</div>
+{% endblock %}

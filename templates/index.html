@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="title">Daftar Tugas</h2>
+    
+    <!-- Form Pencarian -->
+    <form method="GET" action="{{ url_for('index') }}">
+        <input type="text" name="query" placeholder="Search tasks...">
+        <button type="submit">Search</button>
+    </form>
+    
+    <!-- Form Pengurutan -->
+    <form method="GET" action="{{ url_for('index') }}">
+        <select name="sort">
+            <option value="">Sort by</option>
+            <option value="title">Title</option>
+            <option value="status">Status</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+
+    <!-- Form Filter Status -->
+    <form method="GET" action="{{ url_for('index') }}">
+        <select name="status">
+            <option value="">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <ul class="task-list">
+        {% for task in tasks %}
+        <li class="task-item">
+            <div class="task-header">
+                <h3 class="task-title">{{ task.title }}</h3>
+                <span class="status {{ task.status|lower }}">
+                    {{ task.status }}
+                </span>
+            </div>
+            <p class="task-desc">{{ task.description }}</p>
+            <div class="task-actions">
+                <a href="{{ url_for('task_detail', task_id=task.id) }}" class="btn detail-btn">Detail</a>
+                <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn complete-btn">Mark as Complete</a>
+                <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn delete-btn">Delete</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

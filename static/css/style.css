@@ -1,0 +1,292 @@
+/* Umum */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box; /* Memastikan padding dan border dihitung dalam lebar elemen */
+}
+
+/* Membuat halaman menggunakan flexbox */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #e2d5d5;
+    color: #817272;
+    overflow-x: hidden;
+}
+
+/* Container utama */
+.container {
+    flex: 2;
+    padding: 2rem;
+    max-width: 100%; /* Pastikan container tidak melebihi 100% lebar */
+    overflow-x: hidden; /* Cegah elemen meluas ke luar */
+}
+
+
+
+/* Header */
+header {
+    background-color: #c26070; /* Soft pastel pink */
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+
+/* Navbar Links */
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f1a7a7; /* Soft hover color */
+}
+
+/* Footer */
+footer {
+    background-color: #c26070; /* Soft pastel pink */
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Judul dan Deskripsi */
+.title {
+    color: #b65f7c; /* Soft pink */
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.task-item:hover {
+    background-color: #fceaea;
+    transform: scale(1.02);
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(223, 197, 197, 0.932);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 1.3rem;
+    color: #b65f7c;
+    font-weight: bold;
+    text-align-last: left;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status.completed {
+    background-color: #c3e6cb;
+    color: #2e6d3f;
+}
+
+.status.pending {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Tombol */
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.detail-btn {
+    background-color: #d1f7e7;
+    color: #772845;
+}
+
+.complete-btn {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.delete-btn {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Form */
+form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(240, 175, 175, 0.911);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+form:hover {
+    background-color: #fceaea;
+    transform: scale(1.02);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #8a5555;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddb3b3;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #b95066;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #df9696;
+}
+
+/* Desain untuk detail tugas */
+h2 {
+    font-size: 2rem;
+    color: #b65f7c; /* Soft pink color */
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    color: #6c4f56; /* Soft grey color */
+    line-height: 1.6;
+}
+
+.detail-btn:hover {
+    background-color: #b8e3d4;
+}
+
+
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    /* Menyesuaikan container */
+    .container {
+        padding: 1rem;
+    }
+
+    .task-item {
+        padding: 0.8rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .task-title {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+    }
+
+    .profile {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        max-width: 400px;
+        margin: 20px auto;
+    }
+    
+    .profile h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .profile p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 8px;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    /* Menyesuaikan ukuran elemen untuk perangkat yang lebih kecil */
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .task-title {
+        font-size: 1rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    .btn {
+        font-size: 0.75rem;
+    }
+}
