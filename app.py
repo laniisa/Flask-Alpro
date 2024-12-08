@@ -7,6 +7,13 @@ tasks = [
     {"id": 1, "title": "Belajar Flask", "description": "Pelajari cara membuat aplikasi web dengan Flask.", "status": "Pending"},
     {"id": 2, "title": "Olahraga", "description": "Lakukan jogging pagi selama 30 menit.", "status": "Completed"},
 ]
+# Data profil pengguna
+profile = {
+    "name": "Solani",
+    "email": "solani@example.com",
+    "bio": "Saya seorang pengembang web yang antusias belajar Flask.",
+    "tasks_completed": 2
+}
 
 # Fungsi untuk menambahkan tugas baru
 def add_new_task(title, description):
@@ -31,10 +38,21 @@ def dashboard():
 # Route Halaman Daftar Tugas
 @app.route('/tasks')
 def index():
+<<<<<<< HEAD
     query = request.args.get('query')  
     sort_by = request.args.get('sort')
     status_filter = request.args.get('status')
     filtered_tasks = tasks  
+=======
+    return render_template('welcome.html', profile=profile)
+
+@app.route('/task', methods=['GET', 'POST'])
+def task():
+    query = request.args.get('query')  # Menangkap query pencarian
+    sort_by = request.args.get('sort')  # Menangkap parameter untuk pengurutan
+    status_filter = request.args.get('status')  # Menangkap filter status
+    filtered_tasks = tasks  # Default, jika tidak ada pencarian
+>>>>>>> ca7e7be002589c10ce4297cc3b6617caa0c89de7
 
     if query:
         filtered_tasks = [task for task in tasks if query.lower() in task["title"].lower() or query.lower() in task["description"].lower()]
@@ -47,7 +65,7 @@ def index():
     elif sort_by == 'status':
         filtered_tasks.sort(key=lambda x: x["status"].lower())
 
-    return render_template('index.html', tasks=filtered_tasks)
+    return render_template('task.html', tasks=filtered_tasks)
 
 # Route Tambah Tugas
 @app.route('/add', methods=['GET', 'POST'])
@@ -57,7 +75,7 @@ def add_task():
         description = request.form['description']
         new_task = add_new_task(title, description)
         tasks.append(new_task)
-        return redirect(url_for('index'))
+        return redirect(url_for('task'))
     return render_template('add_task.html')
 
 # Route Detail Tugas
@@ -73,15 +91,20 @@ def task_detail(task_id):
 def complete_task(task_id):
     task = next((task for task in tasks if task["id"] == task_id), None)
     if task:
+<<<<<<< HEAD
         mark_task_completed(task_id)
     return redirect(url_for('index'))
+=======
+        mark_task_completed(task_id)  # Memanggil fungsi untuk menandai tugas selesai
+    return redirect(url_for('task'))
+>>>>>>> ca7e7be002589c10ce4297cc3b6617caa0c89de7
 
 # Route Hapus Tugas
 @app.route('/delete/<int:task_id>')
 def delete_task(task_id):
     global tasks
     tasks = [task for task in tasks if task["id"] != task_id]
-    return redirect(url_for('index'))
+    return redirect(url_for('task'))
 
 # Algoritma Bubble Sort untuk mengurutkan tugas berdasarkan judul
 def bubble_sort(tasks):
@@ -91,13 +114,6 @@ def bubble_sort(tasks):
             if tasks[j]["title"] > tasks[j + 1]["title"]:
                 tasks[j], tasks[j + 1] = tasks[j + 1], tasks[j]  # Menukar posisi tugas
 
-# Data profil pengguna
-profile = {
-    "name": "Solani",
-    "email": "solani@example.com",
-    "bio": "Saya seorang pengembang web yang antusias belajar Flask.",
-    "tasks_completed": 2
-}
 
 # Route untuk halaman profil
 @app.route('/profile')
