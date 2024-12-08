@@ -25,7 +25,46 @@ body {
     overflow-x: hidden; /* Cegah elemen meluas ke luar */
 }
 
+/* Gaya untuk .form-bar */
+.form-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1px; /* Mengurangi jarak antar kartu */
+    padding: 1rem;
+}
 
+/* Gaya untuk setiap form dalam .form-bar */
+.form-bar form {
+    display: flex;
+    align-items: center;
+    width: 50%; /* Sesuaikan lebar form agar tidak terlalu lebar */
+}
+
+/* Gaya untuk input dan select */
+.form-bar input,
+.form-bar select {
+    padding: 0.4rem;
+    margin-right: 0.5rem; /* Jarak antara input/select dan tombol */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 0.875rem; /* Mengurangi ukuran font */
+}
+
+/* Gaya untuk tombol */
+.form-bar button {
+    padding: 0.4rem 0.8rem;
+    background-color: #f60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.875rem; /* Mengurangi ukuran font */
+}
+
+.form-bar button:hover {
+    background-color: #ff8c00; /* Ubah warna saat hover */
+}
 
 /* Header */
 header {
@@ -56,6 +95,7 @@ nav a:hover {
     color: #f1a7a7; /* Soft hover color */
 }
 
+
 /* Footer */
 footer {
     background-color: #c26070; /* Soft pastel pink */
@@ -75,7 +115,7 @@ footer p {
     color: #b65f7c; /* Soft pink */
     font-size: 1.8rem;
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .task-item:hover {

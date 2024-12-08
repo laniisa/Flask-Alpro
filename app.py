@@ -23,15 +23,18 @@ def show_completed_tasks():
     completed_tasks = [task for task in tasks if task["status"] == "Completed"]
     return completed_tasks
 
-# Route Halaman Utama
+# Route Halaman Utama (Dashboard)
 @app.route('/')
-# Route Halaman Utama dengan filter status
-@app.route('/', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')  # Menampilkan halaman dashboard pertama kali
+
+# Route Halaman Daftar Tugas
+@app.route('/tasks')
 def index():
-    query = request.args.get('query')  # Menangkap query pencarian
-    sort_by = request.args.get('sort')  # Menangkap parameter untuk pengurutan
-    status_filter = request.args.get('status')  # Menangkap filter status
-    filtered_tasks = tasks  # Default, jika tidak ada pencarian
+    query = request.args.get('query')  
+    sort_by = request.args.get('sort')
+    status_filter = request.args.get('status')
+    filtered_tasks = tasks  
 
     if query:
         filtered_tasks = [task for task in tasks if query.lower() in task["title"].lower() or query.lower() in task["description"].lower()]
@@ -39,7 +42,6 @@ def index():
     if status_filter:
         filtered_tasks = [task for task in filtered_tasks if task["status"] == status_filter]
     
-    # Pengurutan berdasarkan judul atau status
     if sort_by == 'title':
         filtered_tasks.sort(key=lambda x: x["title"].lower())
     elif sort_by == 'status':
@@ -71,7 +73,7 @@ def task_detail(task_id):
 def complete_task(task_id):
     task = next((task for task in tasks if task["id"] == task_id), None)
     if task:
-        mark_task_completed(task_id)  # Memanggil fungsi untuk menandai tugas selesai
+        mark_task_completed(task_id)
     return redirect(url_for('index'))
 
 # Route Hapus Tugas
@@ -101,7 +103,6 @@ profile = {
 @app.route('/profile')
 def profile_page():
     return render_template('profile.html', profile=profile)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

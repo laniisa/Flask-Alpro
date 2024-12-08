@@ -5,31 +5,35 @@
     <h2 class="title">Daftar Tugas</h2>
     
     <!-- Form Pencarian -->
-    <form method="GET" action="{{ url_for('index') }}">
-        <input type="text" name="query" placeholder="Search tasks...">
-        <button type="submit">Search</button>
-    </form>
+    <div class="form-bar">
+        <!-- Form Pencarian -->
+        <form method="GET" action="{{ url_for('index') }}">
+            <input type="text" name="query" placeholder="Search tasks...">
+            <button type="submit">Search</button>
+        </form>
     
-    <!-- Form Pengurutan -->
-    <form method="GET" action="{{ url_for('index') }}">
-        <select name="sort">
-            <option value="">Sort by</option>
-            <option value="title">Title</option>
-            <option value="status">Status</option>
-        </select>
-        <button type="submit">Sort</button>
-    </form>
-
-    <!-- Form Filter Status -->
-    <form method="GET" action="{{ url_for('index') }}">
-        <select name="status">
-            <option value="">All</option>
-            <option value="Pending">Pending</option>
-            <option value="Completed">Completed</option>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
-
+        <!-- Form Pengurutan -->
+        <form method="GET" action="{{ url_for('index') }}">
+            <select name="sort">
+                <option value="">Sort by</option>
+                <option value="title">Title</option>
+                <option value="status">Status</option>
+            </select>
+            <button type="submit">Sort</button>
+        </form>
+    
+        <!-- Form Filter Status -->
+        <form method="GET" action="{{ url_for('index') }}">
+            <select name="status">
+                <option value="">All</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+    
+    
     <ul class="task-list">
         {% for task in tasks %}
         <li class="task-item">
